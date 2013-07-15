@@ -1,0 +1,11 @@
+{
+  "name": "princessrush",
+  "version": "0.1.0",
+  "private": true,
+  "main": "rush.js",
+  "dependencies": {
+    "line-reader": "~0.2.3",
+    "underscore": "~1.5.1",
+    "restler": "~2.0.1"
+  }
+}

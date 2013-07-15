@@ -1,0 +1,9 @@
+POST /princessrush/api/start_stage HTTP/1.1
+Content-Length: 34
+Content-Type: application/x-www-form-urlencoded
+Host: www.limesociety.com
+Connection: Keep-Alive
+Cookie: session=H0G/+BcwIndyKCDC1S/v/H0797k=?binary_version=VjEuMi4xCnAxCi4=&is_authenticated=Uyd0cnVlJwpwMQou&os=VmFuZHJvaWQKcDEKLg==&resource_version=VjEuMi4xCnAxCi4=&token=UydgNmU0YjJlNzZhZGAwN2QyYjMzYjUyLzc3MjQyNzU4YDg2MWNiNmMxZGAxZGQvYTE0ZGIxMjM0MDNlMmU0ZmI0JwpwMQou&user_id=STQ4NjEzNgou
+Cookie2: $Version=1
+
+c=a001a2147b29f0b36359498f9759aa3c
