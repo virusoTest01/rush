@@ -79,7 +79,9 @@ function ping() {
     
     if (! data.user_data) {
       console.log('핑 실패... 10초 후 다시 시도한다.');
-      setTimeout(ping, 10000);
+      process.nextTick(function () {
+        setTimeout(ping, 10000);  
+      });
       return;
     }
 
@@ -90,13 +92,17 @@ function ping() {
     // 망치가 있으면 게임 시작!
     if (hammerNumber > 1) {
       console.log('게임을 시작해볼까!! ' + playLimit + '판 남았다.');
-      startStage();
+      process.nextTick(function () {
+        startStage();  
+      });
       return;
     }
 
     // 30초 뒤에 다시 시도한다.
     console.log('망치가 없다. 기다렸다 다시 하자.');
-    setTimeout(ping, 1000 * 30);
+    process.nextTick(function () {
+      setTimeout(ping, 1000 * 30);  
+    });
   });
 }
 
@@ -108,7 +114,9 @@ function startStage() {
     } else {
       console.log('게임 시작 중 오류.', data);
       console.log('10초 후 다시 시작해보자.');
-      setTimeout(startStage, 10000);
+      process.nextTick(function () {
+        setTimeout(startStage, 10000);
+      });
     }
   });
 }
@@ -119,7 +127,11 @@ function checkStage() {
     if (data.code === 1) {
       console.log('유후~! 스테이지 체크 성공!');
       console.log('게임은 ' + interval + '초 간 진행한다.');
-      setTimeout(finishStage, 1000 * interval);
+
+      process.nextTick(function () {
+        setTimeout(finishStage, 1000 * interval);  
+      });
+      
     } else {
       console.log('음.. 스테이지 체크 중 오류.', data);
     }
@@ -137,7 +149,9 @@ function finishStage() {
 
       if (playLimit > 0) {
         console.log('한 판 더 할까~?');
-        setTimeout(ping, 1000);
+        process.nextTick(function () {
+          setTimeout(ping, 1000);
+        });
       } else {
         console.log('오늘 충분히 했다. 이제 그만~');
       }
@@ -150,7 +164,9 @@ function finishStage() {
       } else {
         console.log('게임 종료 요청에서 오류... 다시 시도한다.', tryFinishing);
 
-        setTimeout(finishStage, 3000);
+        process.nextTick(function () {
+          setTimeout(finishStage, 3000);  
+        });
       }
     }
   });
