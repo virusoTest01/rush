@@ -77,6 +77,12 @@ function readRequestData(name) {
 function ping() {
   request('get_all', function (data) {
     
+    if (! data.user_data) {
+      console.log('핑 실패... 10초 후 다시 시도한다.');
+      setTimeout(ping, 10000);
+      return;
+    }
+
     var hammerNumber = Number(data.user_data['i.hammerNumber']);  
     
     console.log('망치가 ' + hammerNumber + '개 남았다.');
