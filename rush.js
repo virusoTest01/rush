@@ -110,7 +110,10 @@ function startStage() {
   request('start_stage', function (data) {
     if (data.code === 1) {
       console.log('유후~ 시작한다!');
-      checkStage();
+      process.nextTick(function () {
+        checkStage();  
+      });
+      
     } else {
       console.log('게임 시작 중 오류.', data);
       console.log('10초 후 다시 시작해보자.');
