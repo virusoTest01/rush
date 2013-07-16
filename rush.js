@@ -108,7 +108,7 @@ function startStage() {
     } else {
       console.log('게임 시작 중 오류.', data);
       console.log('10초 후 다시 시작해보자.');
-      setTimeout(startStage, 1000);
+      setTimeout(startStage, 10000);
     }
   });
 }
