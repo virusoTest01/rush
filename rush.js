@@ -82,7 +82,7 @@ function ping() {
     console.log('망치가 ' + hammerNumber + '개 남았다.');
 
     // 망치가 있으면 게임 시작!
-    if (hammerNumber > 0) {
+    if (hammerNumber > 1) {
       console.log('게임을 시작해볼까!! ' + playLimit + '판 남았다.');
       startStage();
       return;
@@ -101,6 +101,8 @@ function startStage() {
       checkStage();
     } else {
       console.log('게임 시작 중 오류.', data);
+      console.log('10초 후 다시 시작해보자.');
+      setTimeout(startStage, 1000);
     }
   });
 }
@@ -151,10 +153,8 @@ function finishStage() {
 function request(name, callback) {
   var url = root + reqData[name].url;
   var obj = _.clone(reqData[name].obj);
-  console.log('다음 주소를 요청한다.' + url);
   var req = rest.post(url, obj);
   req.on('complete', function (data) {
-    console.log(data);
     callback(data);
   });
 }
